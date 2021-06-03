@@ -1,6 +1,7 @@
 pub trait ShoppingList {
     fn add_item(&mut self, item: String);
     fn get_all(&self) -> &Vec<String>;
+    fn clear(&mut self);
 }
 
 pub struct InMemoryShoppingList {
@@ -14,6 +15,10 @@ impl ShoppingList for InMemoryShoppingList {
 
     fn get_all(&self) -> &Vec<String> {
         &self.store
+    }
+
+    fn clear(&mut self) {
+        self.store.clear()
     }
 }
 

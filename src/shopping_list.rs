@@ -34,3 +34,10 @@ pub fn get_items(state: State<Mutex<InMemoryShoppingList>>) -> Json<Vec<Shopping
 
     Json(body)
 }
+
+#[delete("/shopping-list/items")]
+pub fn delete_items(state: State<Mutex<InMemoryShoppingList>>) -> Status {
+    state.lock().unwrap().clear();
+
+    Status::NoContent
+}
